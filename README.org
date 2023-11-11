@@ -1,5 +1,8 @@
 * telescope-file-history.nvim
 
+> This is a fork of [dawsers/telescope-file-history.nvim](https://github.com/dawsers/telescope-file-history.nvim)
+> I wasn't happy with some of the default keymaps, that's why using this modified version.
+
 ** Introduction
 
 =telescope-file-history.nvim= is an extension for /Neovim's/
