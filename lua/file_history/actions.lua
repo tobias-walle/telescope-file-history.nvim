@@ -1,6 +1,6 @@
-local actions = require("telescope.actions")
-local actions_state = require("telescope.actions.state")
-local pfiletype = require "plenary.filetype"
+local actions = require('telescope.actions')
+local actions_state = require('telescope.actions.state')
+local pfiletype = require('plenary.filetype')
 local fh = require('file_history')
 
 local fh_actions = {}
@@ -42,7 +42,9 @@ end
 fh_actions.delete_history = function(prompt_bufnr)
   local picker = actions_state.get_current_picker(prompt_bufnr)
   -- If multi-selection, use those values, otherwise choose the selected entry
-  local selections = #picker:get_multi_selection() > 0 and picker:get_multi_selection() or { actions_state.get_selected_entry() }
+  local selections = #picker:get_multi_selection() > 0
+      and picker:get_multi_selection()
+    or { actions_state.get_selected_entry() }
   actions.close(prompt_bufnr)
   for _, selection in ipairs(selections) do
     fh.delete_file(selection.fields.file)
@@ -52,7 +54,9 @@ end
 fh_actions.purge_history = function(prompt_bufnr)
   local picker = actions_state.get_current_picker(prompt_bufnr)
   -- If multi-selection, use those values, otherwise choose the selected entry
-  local selections = #picker:get_multi_selection() > 0 and picker:get_multi_selection() or { actions_state.get_selected_entry() }
+  local selections = #picker:get_multi_selection() > 0
+      and picker:get_multi_selection()
+    or { actions_state.get_selected_entry() }
   actions.close(prompt_bufnr)
   for _, selection in ipairs(selections) do
     fh.purge_file(selection.fields.file)
@@ -73,4 +77,3 @@ fh_actions.open_selected_hash = function(prompt_bufnr)
 end
 
 return fh_actions
-
