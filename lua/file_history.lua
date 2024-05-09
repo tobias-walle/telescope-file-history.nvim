@@ -88,6 +88,10 @@ local FileHistory = {
   end,
 
   backup_file = function(self, dirname, filename)
+    -- Do not backup anything in .git folder
+    if string.find(dirname, '/.git') then
+      return
+    end
     -- Create a snapshot of the file in the .git repository
     local backupdir = self.basedir .. self.hostname .. dirname
     local backuppath = backupdir .. '/' .. filename
